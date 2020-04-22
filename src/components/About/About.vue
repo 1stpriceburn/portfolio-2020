@@ -1,5 +1,5 @@
 <template>
-  <div class="full-width flex flex-center">
+  <div id="about" class="full-width flex flex-center">
     <div class="About">
       <h2>About</h2>
       <div class="About__seperator"></div>
@@ -34,7 +34,9 @@
             durable solutions using modern technology is something I love
             learning about and apply in my everyday worklife.
           </p>
-          <button class="q-pa-sm q-pl-lg q-pr-lg">View my projects</button>
+          <button>
+            <a href="#portfolio"> View my projects</a>
+          </button>
         </div>
         <div class="About__skill-container">
           <ul>
@@ -110,6 +112,8 @@ export default {
 </script>
 
 <style lang="sass">
+.extraNavSpace #about
+  padding-top: 50px
 
 .About
     height: 100vh
@@ -185,6 +189,14 @@ export default {
             cursor: pointer
             transition: 0.3s
             background: #a052e782
+            width: 200px
+            height: 40px
+            display: flex
+
+            a
+              height: 100%
+              width: 100%
+              padding: 5px
 
             &:hover
                 background: none

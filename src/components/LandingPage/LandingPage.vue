@@ -1,11 +1,18 @@
 <template>
-  <div class="full-width LandingPage__container">
+  <div class="full-width LandingPage__container" id="home">
     <div class="LandingPage__title flex flex-center">
       <p>hi, my name is <span style="color: #9d49ea"> ben isaksen,</span></p>
       <p>and i'm a fullstack developer</p>
     </div>
     <div style=" display: flex; justify-content: center;">
-      <button class="LandingPage__button">view site</button>
+      <button class="LandingPage__button">
+        <a
+          style="height: 50px; width: 250px; padding-top: 10px; margin: 0; color: white"
+          href="#about"
+        >
+          view site</a
+        >
+      </button>
     </div>
     <vue-particles
       style="height: 100vh;"
@@ -70,7 +77,9 @@ export default {};
     top: 60%
     width: 250px
     height: 50px
-    margin: 0 auto
+    display: flex
+    justify-content: center
+    align-items: center
     border: 0.1px #9d49ea solid
     background: none
     outline: none

@@ -1,5 +1,9 @@
 <template>
-  <div class="full-width flex flex-center" style="background: #212d3a">
+  <div
+    class="full-width flex flex-center"
+    style="background: #212d3a"
+    id="contact"
+  >
     <div class="Contact">
       <h2 class="Contact-title">Contact</h2>
       <div class="Contact-seperator"></div>
@@ -153,6 +157,7 @@ export default {
 .Contact-title {
   margin-bottom: 20px;
   color: white;
+  padding-top: 20px;
 }
 
 .Contact-seperator {

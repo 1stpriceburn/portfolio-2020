@@ -1,5 +1,9 @@
 <template>
-  <div class="full-width flex flex-center" style="background: #f1f1f1">
+  <div
+    class="full-width flex flex-center"
+    style="background: #f1f1f1"
+    id="portfolio"
+  >
     <div class="Portfolio">
       <h2>Portfolio</h2>
       <div class="About__seperator"></div>
@@ -124,6 +128,7 @@ export default {
 
     h2
         margin-bottom: 20px
+        padding-top: 20px
 
     &__seperator
         background: black
@@ -153,6 +158,7 @@ export default {
             border-radius: 10px
             box-shadow: 0px 0px 3px 0px black
             transition: 0.5s
+            z-index: -1
 
     &__cards-container
         width: 100%
