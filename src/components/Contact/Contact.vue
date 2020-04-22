@@ -181,25 +181,12 @@ export default {
 }
 
 body {
-  /* color: #fff; */
-  /* background: #949c4e;
-  background: linear-gradient(
-    115deg,
-    rgba(86, 216, 228, 1) 10%,
-    rgba(159, 1, 234, 1) 90%
-  ); */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* html,
-body,
-.container {
-  min-height: 100vh;
-} */
 
 .center {
   display: flex;
@@ -227,6 +214,8 @@ header h1 {
 #app {
   display: flex;
 }
+
+/* TODO clean up this mess */
 
 .vue-form {
   font-size: 16px;
@@ -329,7 +318,7 @@ header h1 {
   position: relative;
   user-select: none;
   margin: 0 26px 16px 0;
-  float: left;
+  /* float: left; */
 }
 .vue-form input[type="radio"],
 .vue-form input[type="checkbox"] {

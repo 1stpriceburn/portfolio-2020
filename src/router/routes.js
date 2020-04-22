@@ -25,6 +25,16 @@ const routes = [
     ]
   },
   {
+    path: "/portfoliopage/:article",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/PortfolioPage.vue")
+      }
+    ]
+  },
+  {
     path: "/contact",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/Index.vue") }]

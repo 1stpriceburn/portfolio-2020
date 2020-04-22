@@ -6,26 +6,37 @@
   >
     <div class="Portfolio">
       <h2>Portfolio</h2>
-      <div class="About__seperator"></div>
+      <div
+        style="background: black; width: 100px; height: 5px"
+        class="About__seperator"
+      ></div>
       <ul class="Portfolio__navigator">
         <li
           v-for="(item, index) in navigatorItems"
           :style="categoryClicked == item.name ? 'background: #a052e782' : ''"
           :key="index"
-          @click="clickedCategory(item.name)"
         >
           {{ item.name }}
         </li>
       </ul>
       <ul class="Portfolio__cards-container">
-        <li v-for="(card, index) in portfolioCardsOnDisplay" :key="index">
+        <li
+          v-for="(card, index) in portfolioCardsOnDisplay"
+          :key="index"
+          v-portfoliocardscrollanimation
+        >
           <img :src="card.img" alt="img" />
           <div></div>
           <p class="on-hover-display-title">{{ card.title }}</p>
           <p style="font-weight: 200" class="on-hover-display-subTitle">
             {{ card.tech }}
           </p>
-          <button class="on-hover-display-button">Learn more</button>
+          <button
+            @click="redirectToPortfolioPage(card.title)"
+            class="on-hover-display-button"
+          >
+            Learn more
+          </button>
         </li>
       </ul>
     </div>
@@ -33,6 +44,11 @@
 </template>
 
 <script>
+import Vue from "vue";
+import PortfolioCardAnimation from "../../animations/PortfolioCardAnimation";
+
+Vue.directive("portfoliocardscrollanimation", PortfolioCardAnimation);
+
 export default {
   data() {
     return {
@@ -45,6 +61,21 @@ export default {
       categoryClicked: "",
 
       portfolioCardsOnDisplay: [
+        {
+          title: "Classy",
+          tech: "Vue.js & Firebase",
+          img: "./statics/portfolio.png"
+        },
+        {
+          title: "Classy",
+          tech: "Vue.js & Firebase",
+          img: "./statics/techShielder.png"
+        },
+        {
+          title: "Classy",
+          tech: "Vue.js & Firebase",
+          img: "./statics/modern.jpg"
+        },
         {
           title: "Classy",
           tech: "Vue.js & Firebase",
@@ -104,6 +135,10 @@ export default {
       //   console.log(index);
       this.portfolioCardsOnDisplay = this.Applications[categoryClicked];
       this.categoryClicked = categoryClicked;
+    },
+
+    redirectToPortfolioPage(key) {
+      this.$router.push("/portfoliopage/" + key);
     }
   }
 };
@@ -145,7 +180,6 @@ export default {
         justify-content: space-evenly
 
         li
-
             height: 40px
             width: 180px
             display: flex
@@ -158,11 +192,10 @@ export default {
             border-radius: 10px
             box-shadow: 0px 0px 3px 0px black
             transition: 0.5s
-            z-index: -1
 
     &__cards-container
-        width: 100%
-        height: 100%
+        width: 90%
+        min-height: 60vh
         margin: 0
         margin-top: 40px
         padding: 0
@@ -182,10 +215,20 @@ export default {
             justify-content: center
             padding: 15px
             cursor: pointer
-            transition: 0.3s
             position: relative
             box-shadow: 0px 0px 2px 0px black
             border-radius: 10px
+
+            &:nth-child(2)
+              transition-delay: .1s
+            &:nth-child(3)
+              transition-delay: .3s
+            &:nth-child(4)
+              transition-delay: .9s
+            &:nth-child(5)
+              transition-delay: .7s
+            &:nth-child(6)
+              transition-delay: .5s
 
             &:hover img
                 max-width: 105%
@@ -263,4 +306,13 @@ export default {
 .on-hover-display-button:hover
     background: #9d49ea
     cursor: pointer
+
+.before-enter-portfolio-card
+  opacity: 0;
+  transform: scale(0);
+  transition: all 1s ease-in-out
+
+.enter-portfolio-card
+  opacity: 1;
+  transform: scale(1);
 </style>

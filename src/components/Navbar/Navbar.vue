@@ -36,6 +36,7 @@ export default {
       if (window.scrollY >= this.topOfNav) {
         document.body.classList.add("fixed-nav");
         document.body.classList.add("extraNavSpace");
+        console.log("It's fixed");
       } else {
         document.body.classList.remove("fixed-nav");
         document.body.classList.remove("extraNavSpace");
@@ -69,7 +70,8 @@ export default {
           display: flex
           justify-content: center
           align-items: center
-
+          font-weight: 200
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
         &__link
             width: 140px
             display: flex

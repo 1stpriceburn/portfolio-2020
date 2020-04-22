@@ -1,25 +1,25 @@
 <template>
   <div id="about" class="full-width flex flex-center">
     <div class="About">
-      <h2>About</h2>
+      <h2 class="sticky">About</h2>
       <div class="About__seperator"></div>
       <ul class="About__site-features">
-        <li>
+        <li v-topicscrollanimation>
           <img src="../..//assets/intuitive.png" alt="intuitive" />
           <h5 class="q-ma-md">Intuitive</h5>
           <p>Stylish and easy to navigate</p>
         </li>
-        <li>
+        <li v-topicscrollanimation>
           <img src="../..//assets/responsive.png" alt="responsive" />
           <h5 class="q-ma-md">Responsive</h5>
           <p>Mobile friendly cross platform programming</p>
         </li>
-        <li>
+        <li v-topicscrollanimation>
           <img src="../..//assets/optimized.png" alt="optimized" />
           <h5 class="q-ma-md">Optimized</h5>
           <p>Optimized for SEO and flawless performance</p>
         </li>
-        <li>
+        <li v-topicscrollanimation>
           <img src="../..//assets/dynamic.png" alt="dynamic" />
           <h5 class="q-ma-md">Dynamic</h5>
           <p>Database integration with key frameworks</p>
@@ -45,7 +45,8 @@
                 {{ card.name }}
               </div>
               <div
-                style="background: #9d49ea9c; justlify-self: flex-start; width: 60%"
+                v-skillscrollanimation
+                style="background: #9d49ea9c; justlify-self: flex-start; width: 60%;"
                 :style="skillCards ? 'width:' + card.skillLevel + '%' : ''"
               ></div>
               <div style="color: black; position: absolute; right: 0px">
@@ -60,6 +61,32 @@
 </template>
 
 <script>
+import Vue from "vue";
+import TopicScrollAnimation from "../../animations/TopicScrollAnimation";
+import SkillScrollAnimation from "../../animations/SkillScrollAnimation";
+
+Vue.directive("topicscrollanimation", TopicScrollAnimation);
+Vue.directive("skillscrollanimation", SkillScrollAnimation);
+
+// console.log(new ScrollMagic.Scene({ triggerElement: ".sticky" }));
+// var tl = new TimelineMax({ onUpdate: updatePercentage });
+// const controller = new ScrollMagic.Controller();
+
+// tl.from("#blockquote", 0.5, { x: 200, opacity: 0 });
+// const scene = new ScrollMagic.Scene({
+//   triggerElement: ".sticky",
+//   triggerHook: "onLeave",
+//   duration: "100%"
+// })
+//   .setpin(".sticky")
+//   .setTween(tl)
+//   .addTo(controller);
+
+// function updatePercentage() {
+//   tl.progress();
+//   console.log(tl.progress());
+// }
+
 export default {
   data() {
     return {
@@ -148,6 +175,17 @@ export default {
             display: flex
             flex-flow: column
             align-items: center
+
+
+            &:nth-child(2)
+              transition-delay: 0.1s
+
+            &:nth-child(3)
+              transition-delay: 0.2s
+
+            &:nth-child(4)
+              transition-delay: 0.3s
+
             h5
                 font-size: 3.2vh
                 font-weight: 400
@@ -222,6 +260,10 @@ export default {
                 display: flex
                 position: relative
                 margin: 13px
+                z-index: -1
+                position: relative
+                top: 0
+
 
                 div
                     width: 80px
@@ -231,4 +273,24 @@ export default {
                     font-size: 16px
                     color: white
                     font-weight: bold
+
+.before-enter-about-topics
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.5s cubic-bezier(.62,.16,.43,.9)
+
+.enter-about-topics
+  opacity: 1;
+  transform: translateY(0px);
+
+.before-enter-about-skills
+  opacity: 0;
+  // transform: translateX(-100px);
+  transform: scaleX(0.1)
+  transition: all 0.5s cubic-bezier(.62,.16,.43,.9)
+
+.enter-about-skills
+  opacity: 1;
+  transform: scaleX(1)
+  // transform: translateX(0px);
 </style>

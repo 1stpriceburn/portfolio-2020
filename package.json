@@ -13,7 +13,9 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "firebase": "^7.14.1",
+    "gsap": "^3.2.6",
     "quasar": "^1.0.0",
+    "scrollmagic": "^2.0.7",
     "vue-particles": "^1.0.9"
   },
   "devDependencies": {
